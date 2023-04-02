@@ -1,0 +1,10 @@
+SELECT "Id", sehir_id, tarih, durum, mak, kayit_tarihi
+FROM public.sehir_havadurumu;
+
+CREATE VIEW CityView AS
+    SELECT hd."Id", tarih, durum, mak, sehir_adi
+    FROM sehir_havadurumu hd inner join sehir s on s."Id" = hd.sehir_id  
+    
+    
+    
+select * from cityview 

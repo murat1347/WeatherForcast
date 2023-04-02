@@ -1,0 +1,19 @@
+create or replace procedure set_weather_data(
+   city VARCHAR,
+   tarih timestamp, 
+   durum VARCHAR,
+	mak INT,
+kayit_tarihi timestamp
+)
+language plpgsql    
+as 
+$$
+begin
+ INSERT INTO sehir_havadurumu (sehir_id,tarih,durum,mak,kayit_tarihi) VALUES   
+    ((SELECT s."Id"  FROM SEHIR s WHERE s."sehir_adi" = city),  
+     tarih,  
+     durum,  
+     mak,  
+     kayit_tarihi);
+end 
+$$;
